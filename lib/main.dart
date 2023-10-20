@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 import 'package:to_do_list/app/data/services/auth_service.dart';
+import 'package:to_do_list/app/ui/pages/login_page.dart';
+import 'package:to_do_list/app/ui/pages/register_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,12 +20,12 @@ class MainApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (context) => AuthService()),
       ],
-      child: const MaterialApp(
-        home: Scaffold(
-          body: Center(
-            child: Text('Hello World!'),
-          ),
-        ),
+      child: MaterialApp(
+        initialRoute: '/login',
+        routes: {
+          '/login': (context) => const LoginPage(),
+          '/register': (context) => const RegisterPage(),
+        },
       ),
     );
   }
