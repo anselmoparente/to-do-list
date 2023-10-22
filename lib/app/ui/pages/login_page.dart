@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:to_do_list/app/data/controllers/login_controller.dart';
+import 'package:to_do_list/app/data/services/auth_service.dart';
 import 'package:to_do_list/app/ui/theme/design_system.dart';
 import 'package:to_do_list/app/ui/widgets/custom_button.dart';
 import 'package:to_do_list/app/ui/widgets/custom_text_form_field.dart';
@@ -11,6 +14,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  LoginController loginController = LoginController();
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
 
@@ -51,7 +55,18 @@ class _LoginPageState extends State<LoginPage> {
             Container(
               margin: EdgeInsets.only(top: size.height * 0.03),
               child: CustomButton(
-                onPressed: () {},
+                onPressed: () {
+                  final scaffoldMessenger = ScaffoldMessenger.of(context);
+                  final navigator = Navigator.of(context);
+
+                  loginController.login(
+                    email: email.text,
+                    password: password.text,
+                    auth: context.read<AuthService>(),
+                    scaffoldMessenger: scaffoldMessenger,
+                    navigator: navigator,
+                  );
+                },
                 text: 'Entrar',
               ),
             ),
