@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 import 'package:to_do_list/app/data/services/auth_service.dart';
+import 'package:to_do_list/app/ui/pages/home_page.dart';
 import 'package:to_do_list/app/ui/pages/login_page.dart';
 import 'package:to_do_list/app/ui/pages/register_page.dart';
 
@@ -23,6 +24,7 @@ class MainApp extends StatelessWidget {
       child: MaterialApp(
         initialRoute: '/login',
         routes: {
+          '/home': (context) => const HomePage(),
           '/login': (context) => const LoginPage(),
           '/register': (context) => const RegisterPage(),
         },
