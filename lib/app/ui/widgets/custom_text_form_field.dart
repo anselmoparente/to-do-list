@@ -10,6 +10,7 @@ class CustomTextFormField extends StatelessWidget {
   final void Function()? suffixIconOnPressed;
   final void Function(String)? onChanged;
   final int? maxLines;
+  final bool? readOnly;
 
   const CustomTextFormField({
     required this.controller,
@@ -20,6 +21,7 @@ class CustomTextFormField extends StatelessWidget {
     this.suffixIconOnPressed,
     this.onChanged,
     this.maxLines,
+    this.readOnly,
     super.key,
   });
 
@@ -37,6 +39,7 @@ class CustomTextFormField extends StatelessWidget {
         controller: controller,
         obscureText: obscureText ?? false,
         maxLines: maxLines ?? 1,
+        readOnly: readOnly ?? false,
         decoration: InputDecoration(
           contentPadding: const EdgeInsets.symmetric(horizontal: 10),
           border: InputBorder.none,

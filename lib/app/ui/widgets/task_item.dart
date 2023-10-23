@@ -73,7 +73,11 @@ class _TaskItemState extends State<TaskItem> {
           ],
         ),
       ),
-      onTap: () {},
+      onTap: () => Navigator.pushNamed(
+        context,
+        '/view-task',
+        arguments: widget.task,
+      ),
     );
   }
 }
