@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:to_do_list/app/data/controllers/main_controller.dart';
 import 'package:to_do_list/app/data/services/auth_service.dart';
-import 'package:to_do_list/app/models/task_model.dart';
+import 'package:to_do_list/app/data/models/task_model.dart';
 
 class TaskItem extends StatefulWidget {
   final TaskModel task;
@@ -21,6 +21,8 @@ class TaskItem extends StatefulWidget {
 class _TaskItemState extends State<TaskItem> {
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
     return ListTile(
       title: Text(widget.task.title),
       subtitle: Text(
@@ -49,14 +51,27 @@ class _TaskItemState extends State<TaskItem> {
                 userID: context.read<AuthService>().user!.uid,
               ),
             ),
-      trailing: IconButton(
-        icon: const Icon(Icons.delete),
-        onPressed: () => setState(() {
-          widget.mainController.deleteTask(
-            task: widget.task,
-            userID: context.read<AuthService>().user!.uid,
-          );
-        }),
+      trailing: SizedBox(
+        width: size.width * 0.3,
+        child: Row(
+          children: [
+            IconButton(
+              icon: const Icon(Icons.edit),
+              onPressed: () => Navigator.pushNamed(
+                context,
+                '/edit-task',
+                arguments: [widget.mainController, widget.task],
+              ),
+            ),
+            IconButton(
+              icon: const Icon(Icons.delete),
+              onPressed: () => widget.mainController.deleteTask(
+                task: widget.task,
+                userID: context.read<AuthService>().user!.uid,
+              ),
+            ),
+          ],
+        ),
       ),
       onTap: () {},
     );

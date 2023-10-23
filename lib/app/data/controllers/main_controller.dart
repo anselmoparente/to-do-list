@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:to_do_list/app/models/task_model.dart';
+import 'package:to_do_list/app/data/models/task_model.dart';
 
 class MainController extends ChangeNotifier {
   final List<TaskModel> _tasks = <TaskModel>[];

@@ -6,21 +6,30 @@ import 'package:to_do_list/app/data/models/task_model.dart';
 import 'package:to_do_list/app/ui/theme/design_system.dart';
 import 'package:to_do_list/app/ui/widgets/custom_text_form_field.dart';
 
-class AddTaskPage extends StatefulWidget {
+class EditTaskPage extends StatefulWidget {
   final MainController mainController;
+  final TaskModel task;
 
-  const AddTaskPage({
+  const EditTaskPage({
     super.key,
     required this.mainController,
+    required this.task,
   });
 
   @override
-  State<AddTaskPage> createState() => _AddTaskPageState();
+  State<EditTaskPage> createState() => _EditTaskPageState();
 }
 
-class _AddTaskPageState extends State<AddTaskPage> {
+class _EditTaskPageState extends State<EditTaskPage> {
   final TextEditingController title = TextEditingController();
   final TextEditingController description = TextEditingController();
+
+  @override
+  void initState() {
+    title.text = widget.task.title;
+    description.text = widget.task.description ?? '';
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +37,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
       backgroundColor: ToDoColors.backgroundColor,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       appBar: AppBar(
-        title: const Text('Adicionar Tarefa'),
+        title: const Text('Editar Tarefa'),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -104,7 +113,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
               ),
             ),
             child: const Text(
-              'Criar',
+              'Salvar',
               style: TextStyle(color: Colors.grey),
             ),
           ),
