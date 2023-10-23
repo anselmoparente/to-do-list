@@ -20,7 +20,10 @@ class _HomePageState extends State<HomePage> {
         centerTitle: true,
         actions: [
           IconButton(
-            onPressed: () => Navigator.of(context).pushNamed('/add-task'),
+            onPressed: () => Navigator.of(context).pushNamed(
+              '/add-task',
+              arguments: mainController,
+            ),
             icon: const Icon(Icons.add),
           ),
         ],

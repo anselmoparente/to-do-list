@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
+import 'package:to_do_list/app/data/controllers/main_controller.dart';
 import 'package:to_do_list/app/data/services/auth_service.dart';
 import 'package:to_do_list/app/ui/pages/add_task_page.dart';
 import 'package:to_do_list/app/ui/pages/home_page.dart';
@@ -25,7 +26,11 @@ class MainApp extends StatelessWidget {
       child: MaterialApp(
         initialRoute: '/login',
         routes: {
-          '/add-task': (context) => const AddTaskPage(),
+          '/add-task': (context) {
+            final args =
+                ModalRoute.of(context)?.settings.arguments as MainController;
+            return AddTaskPage(mainController: args);
+          },
           '/home': (context) => const HomePage(),
           '/login': (context) => const LoginPage(),
           '/register': (context) => const RegisterPage(),
