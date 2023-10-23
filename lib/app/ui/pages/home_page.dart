@@ -39,6 +39,9 @@ class _HomePageState extends State<HomePage> {
           userID: context.read<AuthService>().user!.uid,
         ),
         builder: (context, snapshot) {
+          if (mainController.isLoading) {
+            return const Center(child: CircularProgressIndicator());
+          }
           return mainController.tasks.isEmpty
               ? const Center(
                   child: Text('Nenhuma tarefa encontrada.'),

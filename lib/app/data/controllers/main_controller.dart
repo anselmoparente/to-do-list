@@ -6,6 +6,8 @@ class MainController extends ChangeNotifier {
   final List<TaskModel> _tasks = <TaskModel>[];
   List<TaskModel> get tasks => _tasks.toList();
 
+  bool isLoading = true;
+
   Future<void> getTasks({
     required String userID,
   }) async {
@@ -25,6 +27,7 @@ class MainController extends ChangeNotifier {
       );
     }
 
+    isLoading = false;
     notifyListeners();
   }
 
