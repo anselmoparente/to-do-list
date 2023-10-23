@@ -104,7 +104,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
               ),
             ),
             child: const Text(
-              'Salvar',
+              'Criar',
               style: TextStyle(color: Colors.grey),
             ),
           ),

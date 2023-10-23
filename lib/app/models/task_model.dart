@@ -10,4 +10,9 @@ class TaskModel {
     this.description,
     this.isComplete,
   });
+
+  @override
+  String toString() {
+    return 'Task: {id: $id, title: $title, description: $description, isComplete: $isComplete}';
+  }
 }
