@@ -22,8 +22,10 @@ class MainApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => AuthService()),
+        ChangeNotifierProvider(create: (context) => MainController()),
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         initialRoute: '/login',
         routes: {
           '/add-task': (context) {
