@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:to_do_list/app/data/controllers/main_controller.dart';
-import 'package:to_do_list/app/data/services/auth_service.dart';
 import 'package:to_do_list/app/data/models/task_model.dart';
 import 'package:to_do_list/app/ui/theme/design_system.dart';
 import 'package:to_do_list/app/ui/widgets/custom_text_form_field.dart';
